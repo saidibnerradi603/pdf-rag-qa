@@ -1,0 +1,13 @@
+fastapi==0.119.0
+uvicorn[standard]==0.37.0
+pydantic[email]==2.12.2
+pydantic-settings==2.11.0
+python-dotenv==1.1.1
+llama-cloud-services==0.6.73
+langchain==0.3.27
+langchain-community==0.3.30
+langchain-cohere==0.4.6
+pinecone==7.3.0
+langchain-pinecone==0.2.12
+langchain-google-genai==2.1.12
+supabase==2.22.1

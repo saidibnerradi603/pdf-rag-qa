@@ -1,4 +1,4 @@
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr,HttpUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -8,7 +8,8 @@ class APIKeysSettings(BaseSettings):
     cohere_api_key: SecretStr = Field(..., description="Cohere API Key", env="COHERE_API_KEY")
     pinecone_api_key: SecretStr = Field(..., description="Pinecone API Key", env="PINECONE_API_KEY")
     llama_cloud_api_key: SecretStr = Field(..., description="LlamaCloud API Key", env="LLAMA_CLOUD_API_KEY")
-
+    supabase_url: HttpUrl =  Field(..., description="Supabase Project URL", env="SUPABASE_URL")
+    supabase_key: SecretStr =  Field(..., description="Supabase API Key", env="SUPABASE_KEY")
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
