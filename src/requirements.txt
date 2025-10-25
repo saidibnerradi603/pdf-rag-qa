@@ -11,3 +11,4 @@ pinecone==7.3.0
 langchain-pinecone==0.2.12
 langchain-google-genai==2.1.12
 supabase==2.22.1
+python-multipart==0.0.20

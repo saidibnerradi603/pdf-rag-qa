@@ -1,9 +1,10 @@
 from pydantic import BaseModel, EmailStr, Field, field_validator
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 import re
 
 
+# Auth schemas
 class SignupRequest(BaseModel):
     """Request model for user signup."""
     email: EmailStr = Field(..., description="User email address")
@@ -62,3 +63,45 @@ class ErrorResponse(BaseModel):
     """Standard error response model."""
     detail: str = Field(..., description="Error message")
     error_code: Optional[str] = Field(None, description="Error code for client handling")
+
+
+# Document schemas
+class DocumentMetadata(BaseModel):
+    """Optional metadata for documents."""
+    title: Optional[str] = None
+    tags: Optional[list[str]] = None
+    description: Optional[str] = None
+
+
+class DocumentResponse(BaseModel):
+    """Response model for document operations."""
+    id: str
+    user_id: str
+    file_name: str
+    bucket_path: str
+    status: str
+    metadata: dict[str, Any] = {}
+    created_at: datetime
+    updated_at: datetime
+
+
+class DocumentListResponse(BaseModel):
+    """Response for listing documents."""
+    documents: list[DocumentResponse]
+    total: int
+
+
+class DocumentUploadResponse(BaseModel):
+    """Response after successful upload."""
+    document_id: str
+    file_name: str
+    status: str
+    bucket_path: str
+    created_at: datetime
+    message: str = "Upload successful"
+
+
+class DocumentDeleteResponse(BaseModel):
+    """Response after deletion."""
+    message: str
+    document_id: str

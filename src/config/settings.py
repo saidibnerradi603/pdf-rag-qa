@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     version: str = "0.1.0"
 
     api_keys: APIKeysSettings = Field(default_factory=APIKeysSettings)
+    
+    # File upload settings
+    max_file_size_mb: int = 5
+    allowed_mime_types: list[str] = ["application/pdf"]
+    storage_bucket_name: str = "pdfs_files"
 
 
     model_config = SettingsConfigDict(

@@ -4,6 +4,7 @@ import logging
 
 from config.settings import get_settings
 from routes.auth import router as auth_router
+from routes.documents import router as documents_router
 
 # Configure logging
 logging.basicConfig(
@@ -34,6 +35,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(documents_router)
 
 @app.get("/", tags=["Root"])
 def root():
